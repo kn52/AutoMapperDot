@@ -11,13 +11,7 @@
                 cfg.CreateMap<Author, AuthorSimilarDTO>();
             });
             IMapper iMapper = config.CreateMapper();
-            var author = new Author
-            {
-                Id = 1,
-                FirstName = "Stephen",
-                LastName = "Hawking",
-                Address = "United Kingdom",
-            };
+            var author = GetAuthor();
             var authorDTO = iMapper.Map<Author, AuthorSimilarDTO>(author);
             Console.WriteLine("Author Name: " + authorDTO.FirstName + " " + authorDTO.LastName);
         }
@@ -32,13 +26,7 @@
                 .ForMember(dest => dest.Addr, opt => opt.MapFrom(src => src.Address));
             });
             IMapper iMapper = config.CreateMapper();
-            var author = new Author
-            {
-                Id = 1,
-                FirstName = "Stephen",
-                LastName = "Hawking",
-                Address = "United Kingdom",
-            };
+            var author = GetAuthor(); 
             var authorDTO = iMapper.Map<Author, AuthorDissimilarDTO>(author);
             Console.WriteLine("Author Name: " + authorDTO.FName + " " + authorDTO.LName);
         }
@@ -51,15 +39,20 @@
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => (src.FirstName != null)));
             });
             IMapper iMapper = config.CreateMapper();
-            var author = new Author
+            var author = GetAuthor();
+            var authorDTO = iMapper.Map<Author, AuthorDissimilarDTO>(author);
+            Console.WriteLine("Author Name: " + authorDTO.FName + " " + authorDTO.LName);
+        }
+
+        private static Author GetAuthor()
+        {
+            return new Author
             {
                 Id = 1,
                 FirstName = "Stephen",
                 LastName = "Hawking",
                 Address = "United Kingdom",
             };
-            var authorDTO = iMapper.Map<Author, AuthorDissimilarDTO>(author);
-            Console.WriteLine("Author Name: " + authorDTO.FName + " " + authorDTO.LName);
         }
     }
 }
