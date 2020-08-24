@@ -40,7 +40,26 @@
                 Address = "United Kingdom",
             };
             var authorDTO = iMapper.Map<Author, AuthorDissimilarDTO>(author);
-            Console.WriteLine("Author Name: " + authorDTO.FirstName + " " + authorDTO.LastName);
+            Console.WriteLine("Author Name: " + authorDTO.FName + " " + authorDTO.LName);
+        }
+
+        public static void CMapper()
+        {
+            Console.WriteLine("=====Conditional=====");
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Author, AuthorSimilarDTO>()
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => (src.FirstName != null)));
+            });
+            IMapper iMapper = config.CreateMapper();
+            var author = new Author
+            {
+                Id = 1,
+                FirstName = "Stephen",
+                LastName = "Hawking",
+                Address = "United Kingdom",
+            };
+            var authorDTO = iMapper.Map<Author, AuthorDissimilarDTO>(author);
+            Console.WriteLine("Author Name: " + authorDTO.FName + " " + authorDTO.LName);
         }
     }
 }

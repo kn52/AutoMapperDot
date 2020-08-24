@@ -18,6 +18,7 @@
                 Console.WriteLine("=====Auto Mapper=====");
                 Console.WriteLine("1. Similar type Auto Mapping");
                 Console.WriteLine("2. Dissimilar type Auto Mapping");
+                Console.WriteLine("2. Conditional Auto Mapping");
                 Console.WriteLine("n. Dissimilar type Auto Mapping");
                 choice = Console.ReadLine();
                 Console.Clear();
@@ -29,6 +30,10 @@
 
                     case "2":
                         AuthorDemo.DMapper();
+                        break;
+
+                    case "3":
+                        AuthorDemo.CMapper();
                         break;
 
                     case "n":
