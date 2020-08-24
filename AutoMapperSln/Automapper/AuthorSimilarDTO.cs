@@ -1,6 +1,6 @@
 ﻿namespace AutoMapperSln.Automapper
 {
-    public class AuthorDTO
+    public class AuthorSimilarDTO
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

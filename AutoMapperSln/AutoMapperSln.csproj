@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Automapper\AuthorAddress.cs" />
     <Compile Include="Automapper\Author.cs" />
     <Compile Include="Automapper\AuthorDTO.cs" />
     <Compile Include="Automapper\AuthorDemo.cs" />
